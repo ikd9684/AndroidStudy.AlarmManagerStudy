@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vmA"
+            type="app.ikd9684.android.study.local_notification_study.activities_fragments.MainActivity.NotificationViewModel" />
+
+        <variable
+            name="vmB"
+            type="app.ikd9684.android.study.local_notification_study.activities_fragments.MainActivity.NotificationViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activities_fragments.MainActivity">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="160dp"
+            android:text="A:"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewTimeA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            android:text="@{vmA.selectedTime.toString(@string/time_format_pattern)}"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@+id/textView"
+            tools:text="13:24" />
+
+        <Button
+            android:id="@+id/buttonSetA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:enabled="@{vmA.started == false}"
+            android:text="@string/button_label_set"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewTimeA"
+            app:layout_constraintStart_toEndOf="@+id/textViewTimeA"
+            app:layout_constraintTop_toTopOf="@+id/textViewTimeA" />
+
+        <Button
+            android:id="@+id/buttonCancelA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:enabled="@{vmA.started}"
+            android:text="@string/button_label_cancel"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewTimeA"
+            app:layout_constraintStart_toEndOf="@+id/buttonSetA"
+            app:layout_constraintTop_toTopOf="@+id/textViewTimeA" />
+
+        <TextView
+            android:id="@+id/textViewB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="B:"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textViewTimeB"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:paddingStart="20dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            android:text="@{vmB.selectedTime.toString(@string/time_format_pattern)}"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewB"
+            app:layout_constraintEnd_toEndOf="@+id/textViewTimeA"
+            app:layout_constraintStart_toStartOf="@+id/textViewTimeA"
+            app:layout_constraintTop_toTopOf="@+id/textViewB"
+            tools:text="13:24" />
+
+        <Button
+            android:id="@+id/buttonSetB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="@{vmB.started == false}"
+            android:text="@string/button_label_set"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewTimeB"
+            app:layout_constraintStart_toStartOf="@+id/buttonSetA"
+            app:layout_constraintTop_toTopOf="@+id/textViewTimeB" />
+
+        <Button
+            android:id="@+id/buttonCancelB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="@{vmB.started}"
+            android:text="@string/button_label_cancel"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewTimeB"
+            app:layout_constraintStart_toStartOf="@+id/buttonCancelA"
+            app:layout_constraintTop_toTopOf="@+id/textViewTimeB" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
